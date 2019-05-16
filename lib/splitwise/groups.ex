@@ -7,7 +7,7 @@ defmodule Splitwise.Groups do
     Splitwise.Client.get!("/api/v3.0/get_groups", access_token)
   end
 
-  def info(access_token, id) do
+  def get(access_token, id) do
     Splitwise.Client.get!("/api/v3.0/get_group/#{id}", access_token)
   end
 
