@@ -7,11 +7,12 @@ defmodule Splitwise.Users do
     Splitwise.Client.get!("/api/v3.0/get_current_user", access_token)
   end
 
-  # TODO: "get_user/" + id
-  # def user_info(id) do
-  # end
+  def get(access_token, id) do
+    Splitwise.Client.get!("/api/v3.0/get_user/#{id}", access_token)
+  end
 
-  # TODO: "update_user/" + id
-  # def update_user(id, data) do
-  # end
+  def update(access_token, id, data) do
+    body = Map.to_list(data)
+    Splitwise.Client.post!("/api/v3.0/update_user/#{id}", access_token, body)
+  end
 end

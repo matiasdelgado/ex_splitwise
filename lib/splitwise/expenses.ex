@@ -17,7 +17,7 @@ defmodule Splitwise.Expenses do
     #   {"users__0__user_id", "13219701" },
     #   {"users__0__paid_share", "0" },
     #   {"users__0__owed_share", "500" },
-    #   {"users__1__user_id", "20649636" }, # guille
+    #   {"users__1__user_id", "20649636" },
     #   {"users__1__paid_share", "500" },
     #   {"users__1__owed_share", "0" },
     #   {"category_id", "18" },

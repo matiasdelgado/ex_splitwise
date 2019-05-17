@@ -62,6 +62,19 @@ All the functions return a `%Splitwise.Reponse{}` struct with the following fiel
 * [Comments](#Comments)
 * [Currencies](#Currencies)
 
+### Users
+* current
+  ```elixir
+  %{body: user} = Splitwise.Users.current(token)
+  ```
+* get
+  ```elixir
+  %{body: user} = Splitwise.Users.get(token, id)
+  ```
+* update
+  ```elixir
+  %{body: user} = Splitwise.Users.get(token, id, data)
+  ```
 ### Expenses
 * all
   ```elixir
