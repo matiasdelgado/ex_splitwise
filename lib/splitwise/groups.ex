@@ -3,7 +3,7 @@ defmodule Splitwise.Groups do
   This module defines the Splitwise.Groups functions
   """
 
-  def list(access_token) do
+  def all(access_token) do
     Splitwise.Client.get!("/api/v3.0/get_groups", access_token)
   end
 

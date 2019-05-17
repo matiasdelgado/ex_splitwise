@@ -3,7 +3,7 @@ defmodule Splitwise.Friends do
   This module defines the Splitwise.Friends functions
   """
 
-  def list(access_token) do
+  def all(access_token) do
     Splitwise.Client.get!("/api/v3.0/get_friends", access_token)
   end
 
