@@ -1,8 +1,26 @@
 defmodule Splitwise.Friends do
   @moduledoc """
-  This module defines the Splitwise.Friends functions
+  This module defines the functions to manage Splitwise friends.
   """
 
+  @doc """
+  Get current user's friends.
+
+  ## Example
+      iex> Splitwise.Friends.all("token")
+      %Splitwise.Client.Response{
+        body: %{
+          "friends" => [
+            %{ ... },
+            %{ ... }
+          ]
+        },
+        headers: [
+          ...
+        ],
+        status: 200
+      }
+  """
   def all(access_token) do
     Splitwise.Client.get!("/api/v3.0/get_friends", access_token)
   end

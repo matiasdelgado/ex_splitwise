@@ -26,7 +26,7 @@ end
     authorize_url = Splitwise.OAuth2.Client.authorize_url!(client)
   ```
 
-  Get a token with the `core` returned by Splitwise:
+  Get a token with the `code` returned by Splitwise:
   ```elixir
     def callback(conn, params) do
       client = Splitwise.OAuth2.Client.get_token!(client, params["code"])

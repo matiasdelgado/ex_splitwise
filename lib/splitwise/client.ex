@@ -1,6 +1,6 @@
 defmodule Splitwise.Client do
   @moduledoc """
-  Defines the `Splitwise.Client` struct, and the HTTP requests functions.
+  Defines the `Splitwise.Client` struct, and the HTTP requests functions to hit the Splitwise API.
   """
 
   @base_url "https://www.splitwise.com"

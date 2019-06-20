@@ -7,7 +7,15 @@ defmodule Splitwise.MixProject do
       version: "0.1.0",
       elixir: "~> 1.4",
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+      name: "Splitwise",
+      source_url: "https://github.com/matiasdelgado/splitwise",
+      docs: [
+        extras: [
+          {"README.md", [title: "Overview"]}
+        ],
+        main: "readme"
+      ]
     ]
   end
 
@@ -23,7 +31,8 @@ defmodule Splitwise.MixProject do
     [
       {:oauth2, "~>1.0"},
       {:poison, "~> 3.0", optional: true},
-      {:httpoison, "~> 1.5"}
+      {:httpoison, "~> 1.5"},
+      {:ex_doc, "~> 0.19", only: :dev, runtime: false}
     ]
   end
 end

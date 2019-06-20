@@ -1,18 +1,5 @@
 defmodule Splitwise do
   @moduledoc """
-  Documentation for Splitwise.
+  Splitwise API wrapper.
   """
-
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> Splitwise.hello()
-      :world
-
-  """
-  def hello do
-    :world
-  end
 end

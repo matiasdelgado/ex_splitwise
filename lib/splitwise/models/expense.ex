@@ -1,4 +1,6 @@
 defmodule Splitwise.Models.Expense do
+  @moduledoc false
+
   defstruct [
     :cost,
     :currency_code,
@@ -11,6 +13,10 @@ defmodule Splitwise.Models.Expense do
 
   alias Splitwise.Models.Expense.User
 
+  @doc """
+  Converts a Splitwise.Models.Expense to the format expected by Splitwise.
+  Particularly, converts the expense's users to a flat list.
+  """
   def convert(data) do
     result = [
       { "cost", data.cost },

@@ -1,6 +1,7 @@
 defmodule Splitwise.Client.Response do
   @moduledoc """
-  Response struct
+  Response struct, returned by all the functions in the library.
+  Includes the decoded JSON `body`, `headers` and `status` code.
   """
 
   defstruct [
