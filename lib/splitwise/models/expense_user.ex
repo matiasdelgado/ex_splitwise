@@ -1,4 +1,4 @@
-defmodule Splitwise.Models.Expense.User do
+defmodule ExSplitwise.Models.Expense.User do
   @moduledoc false
 
   defstruct [

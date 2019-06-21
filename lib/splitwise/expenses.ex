@@ -1,16 +1,16 @@
-defmodule Splitwise.Expenses do
+defmodule ExSplitwise.Expenses do
   @moduledoc """
   This module defines the functions to manage Splitwise expenses.
   """
 
-  alias Splitwise.Client
+  alias ExSplitwise.Client
 
   @doc """
   Get user's expenses.
 
   ## Example
-      iex> Splitwise.Expenses.get("token", 28091891)
-      %Splitwise.Client.Response{
+      iex> ExSplitwise.Expenses.get("token", 28091891)
+      %ExSplitwise.Client.Response{
         body: %{
           "expenses" => [
             %{ ...  },
@@ -31,8 +31,8 @@ defmodule Splitwise.Expenses do
   Get expense by id.
 
   ## Example
-      iex> Splitwise.Expenses.get("token", 28091891)
-      %Splitwise.Client.Response{
+      iex> ExSplitwise.Expenses.get("token", 28091891)
+      %ExSplitwise.Client.Response{
         body: %{
           "expense" => %{
             ...
@@ -83,7 +83,7 @@ defmodule Splitwise.Expenses do
       }
   """
   def create(access_token, data) do
-    body = Splitwise.Models.Expense.convert(data)
+    body = ExSplitwise.Models.Expense.convert(data)
     Client.post!("/api/v3.0/create_expense", access_token, body)
   end
 
@@ -91,7 +91,7 @@ defmodule Splitwise.Expenses do
   Update expense by id.
   """
   def update(access_token, id, data) do
-    body = Splitwise.Models.Expense.convert(data)
+    body = ExSplitwise.Models.Expense.convert(data)
     Client.post!("/api/v3.0/update_expense/#{id}", access_token, body)
   end
 

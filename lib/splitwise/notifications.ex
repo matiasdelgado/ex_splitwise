@@ -1,4 +1,4 @@
-defmodule Splitwise.Notifications do
+defmodule ExSplitwise.Notifications do
   @moduledoc """
   This module defines the functions to manage Splitwise notifications.
   """
@@ -7,8 +7,8 @@ defmodule Splitwise.Notifications do
   Get all the notifications of the user.
 
   ## Example
-      iex> Splitwise.Notifications.all("token")
-      %Splitwise.Client.Response{
+      iex> ExSplitwise.Notifications.all("token")
+      %ExSplitwise.Client.Response{
         body: %{
           "notifications" => [
             %{
@@ -30,6 +30,6 @@ defmodule Splitwise.Notifications do
       }
   """
   def all(access_token) do
-    Splitwise.Client.get!( "/api/v3.0/get_notifications", access_token)
+    ExSplitwise.Client.get!( "/api/v3.0/get_notifications", access_token)
   end
 end

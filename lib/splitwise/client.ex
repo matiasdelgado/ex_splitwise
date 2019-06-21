@@ -1,11 +1,11 @@
-defmodule Splitwise.Client do
+defmodule ExSplitwise.Client do
   @moduledoc """
-  Defines the `Splitwise.Client` struct, and the HTTP requests functions to hit the Splitwise API.
+  Defines the `ExSplitwise.Client` struct, and the HTTP requests functions to hit the Splitwise API.
   """
 
   @base_url "https://www.splitwise.com"
 
-  alias Splitwise.Client.Response
+  alias ExSplitwise.Client.Response
 
   def get!(url, access_token) do
     result = HTTPoison.get!("#{@base_url}#{url}", ["Authorization": "Bearer #{access_token}"])
@@ -39,6 +39,6 @@ defmodule Splitwise.Client do
   end
 
   defp json_lib() do
-    Application.get_env(:splitwise, :json_library) || Poison
+    Application.get_env(:ex_splitwise, :json_library) || Poison
   end
 end

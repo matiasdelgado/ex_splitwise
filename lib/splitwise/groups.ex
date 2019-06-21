@@ -1,4 +1,4 @@
-defmodule Splitwise.Groups do
+defmodule ExSplitwise.Groups do
   @moduledoc """
   This module defines the functions to manage Splitwise groups.
   """
@@ -7,8 +7,8 @@ defmodule Splitwise.Groups do
   Get all the groups.
 
   ## Example
-      iex> Splitwise.Groups.all("token")
-      %Splitwise.Client.Response{
+      iex> ExSplitwise.Groups.all("token")
+      %ExSplitwise.Client.Response{
         body: %{
           "groups" => [...]
         },
@@ -19,15 +19,15 @@ defmodule Splitwise.Groups do
       }
   """
   def all(access_token) do
-    Splitwise.Client.get!("/api/v3.0/get_groups", access_token)
+    ExSplitwise.Client.get!("/api/v3.0/get_groups", access_token)
   end
 
   @doc """
   Get group by id.
 
   ## Example
-      iex> Splitwise.Groups.get("token", 1000)
-      %Splitwise.Client.Response{
+      iex> ExSplitwise.Groups.get("token", 1000)
+      %ExSplitwise.Client.Response{
         body: %{
           "group" => %{
             "created_at" => "2019-01-24T00:04:22Z",
@@ -78,7 +78,7 @@ defmodule Splitwise.Groups do
       } 
   """
   def get(access_token, id) do
-    Splitwise.Client.get!("/api/v3.0/get_group/#{id}", access_token)
+    ExSplitwise.Client.get!("/api/v3.0/get_group/#{id}", access_token)
   end
 
   # TODO: "create_group"

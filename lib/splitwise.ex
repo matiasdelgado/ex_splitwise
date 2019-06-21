@@ -1,4 +1,4 @@
-defmodule Splitwise do
+defmodule ExSplitwise do
   @moduledoc """
   Splitwise API wrapper.
   """

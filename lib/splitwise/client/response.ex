@@ -1,4 +1,4 @@
-defmodule Splitwise.Client.Response do
+defmodule ExSplitwise.Client.Response do
   @moduledoc """
   Response struct, returned by all the functions in the library.
   Includes the decoded JSON `body`, `headers` and `status` code.

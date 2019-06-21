@@ -1,4 +1,4 @@
-defmodule Splitwise.Users do
+defmodule ExSplitwise.Users do
   @moduledoc """
   This module defines the functions to manage Splitwise users.
   """
@@ -48,7 +48,7 @@ defmodule Splitwise.Users do
       }
   """
   def current(access_token) do
-    Splitwise.Client.get!("/api/v3.0/get_current_user", access_token)
+    ExSplitwise.Client.get!("/api/v3.0/get_current_user", access_token)
   end
 
   @doc """
@@ -78,7 +78,7 @@ defmodule Splitwise.Users do
       }
   """
   def get(access_token, id) do
-    Splitwise.Client.get!("/api/v3.0/get_user/#{id}", access_token)
+    ExSplitwise.Client.get!("/api/v3.0/get_user/#{id}", access_token)
   end
 
   @doc """
@@ -86,8 +86,8 @@ defmodule Splitwise.Users do
   A user can edit anything about their own account, and may edit the first_name, last_name,
   and email for any acquaintances who have not logged in yet.
   ## Example
-      iex> Splitwise.Users.update("access-token", 12345, %{ "first_name" => "Atticus", "last_name" => "Finch" })
-      %Splitwise.Client.Response{
+      iex> ExSplitwise.Users.update("access-token", 12345, %{ "first_name" => "Atticus", "last_name" => "Finch" })
+      %ExSplitwise.Client.Response{
         body: %{
           "user" => %{
             ...
@@ -101,6 +101,6 @@ defmodule Splitwise.Users do
   """
   def update(access_token, id, data) do
     body = Map.to_list(data)
-    Splitwise.Client.post!("/api/v3.0/update_user/#{id}", access_token, body)
+    ExSplitwise.Client.post!("/api/v3.0/update_user/#{id}", access_token, body)
   end
 end

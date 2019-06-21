@@ -1,6 +1,7 @@
-defmodule Splitwise.Models.Expense do
+defmodule ExSplitwise.Models.Expense do
   @moduledoc false
 
+  @enforce_keys [:cost, :users]
   defstruct [
     :cost,
     :currency_code,

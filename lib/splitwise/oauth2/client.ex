@@ -1,4 +1,4 @@
-defmodule Splitwise.OAuth2.Client do
+defmodule ExSplitwise.OAuth2.Client do
   @moduledoc false
 
   @base_site "https://www.splitwise.com"

@@ -1,4 +1,4 @@
-defmodule Splitwise.Friends do
+defmodule ExSplitwise.Friends do
   @moduledoc """
   This module defines the functions to manage Splitwise friends.
   """
@@ -7,8 +7,8 @@ defmodule Splitwise.Friends do
   Get current user's friends.
 
   ## Example
-      iex> Splitwise.Friends.all("token")
-      %Splitwise.Client.Response{
+      iex> ExSplitwise.Friends.all("token")
+      %ExSplitwise.Client.Response{
         body: %{
           "friends" => [
             %{ ... },
@@ -22,7 +22,7 @@ defmodule Splitwise.Friends do
       }
   """
   def all(access_token) do
-    Splitwise.Client.get!("/api/v3.0/get_friends", access_token)
+    ExSplitwise.Client.get!("/api/v3.0/get_friends", access_token)
   end
 
   # TODO: "get_friend/" + id
