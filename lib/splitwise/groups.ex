@@ -18,8 +18,8 @@ defmodule ExSplitwise.Groups do
         status: 200
       }
   """
-  def all(access_token) do
-    ExSplitwise.Client.get!("/api/v3.0/get_groups", access_token)
+  def all() do
+    ExSplitwise.Client.get!("/api/v3.0/get_groups")
   end
 
   @doc """
@@ -77,8 +77,8 @@ defmodule ExSplitwise.Groups do
         status: 200
       } 
   """
-  def get(access_token, id) do
-    ExSplitwise.Client.get!("/api/v3.0/get_group/#{id}", access_token)
+  def get(id) do
+    ExSplitwise.Client.get!("/api/v3.0/get_group/#{id}")
   end
 
   # TODO: "create_group"

@@ -47,8 +47,8 @@ defmodule ExSplitwise.Users do
         status: 200
       }
   """
-  def current(access_token) do
-    ExSplitwise.Client.get!("/api/v3.0/get_current_user", access_token)
+  def current() do
+    ExSplitwise.Client.get!("/api/v3.0/get_current_user")
   end
 
   @doc """
@@ -77,8 +77,8 @@ defmodule ExSplitwise.Users do
         status: 200
       }
   """
-  def get(access_token, id) do
-    ExSplitwise.Client.get!("/api/v3.0/get_user/#{id}", access_token)
+  def get(id) do
+    ExSplitwise.Client.get!("/api/v3.0/get_user/#{id}")
   end
 
   @doc """
@@ -99,8 +99,8 @@ defmodule ExSplitwise.Users do
         status: 200
       }
   """
-  def update(access_token, id, data) do
+  def update(id, data) do
     body = Map.to_list(data)
-    ExSplitwise.Client.post!("/api/v3.0/update_user/#{id}", access_token, body)
+    ExSplitwise.Client.post!("/api/v3.0/update_user/#{id}", body)
   end
 end

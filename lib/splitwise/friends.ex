@@ -21,8 +21,8 @@ defmodule ExSplitwise.Friends do
         status: 200
       }
   """
-  def all(access_token) do
-    ExSplitwise.Client.get!("/api/v3.0/get_friends", access_token)
+  def all() do
+    ExSplitwise.Client.get!("/api/v3.0/get_friends")
   end
 
   # TODO: "get_friend/" + id

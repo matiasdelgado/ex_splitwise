@@ -29,7 +29,7 @@ defmodule ExSplitwise.Notifications do
         status: 200
       }
   """
-  def all(access_token) do
-    ExSplitwise.Client.get!( "/api/v3.0/get_notifications", access_token)
+  def all() do
+    ExSplitwise.Client.get!( "/api/v3.0/get_notifications")
   end
 end

@@ -23,8 +23,8 @@ defmodule ExSplitwise.Expenses do
         status: 200
       }
   """
-  def all(access_token) do
-    Client.get!("/api/v3.0/get_expenses", access_token)
+  def all() do
+    Client.get!("/api/v3.0/get_expenses")
   end
 
   @doc """
@@ -44,8 +44,8 @@ defmodule ExSplitwise.Expenses do
         status: 200
       }
   """
-  def get(access_token, id) do
-    Client.get!("/api/v3.0/get_expense/#{id}", access_token)
+  def get(id) do
+    Client.get!("/api/v3.0/get_expense/#{id}")
   end
 
   @doc """
@@ -82,17 +82,17 @@ defmodule ExSplitwise.Expenses do
         status: 200
       }
   """
-  def create(access_token, data) do
+  def create(data) do
     body = ExSplitwise.Models.Expense.convert(data)
-    Client.post!("/api/v3.0/create_expense", access_token, body)
+    Client.post!("/api/v3.0/create_expense", body)
   end
 
   @doc """
   Update expense by id.
   """
-  def update(access_token, id, data) do
+  def update(id, data) do
     body = ExSplitwise.Models.Expense.convert(data)
-    Client.post!("/api/v3.0/update_expense/#{id}", access_token, body)
+    Client.post!("/api/v3.0/update_expense/#{id}", body)
   end
 
   @doc """
@@ -101,7 +101,7 @@ defmodule ExSplitwise.Expenses do
   ## Example
       iex> Splitwise.Expenses.delete(id)
   """
-  def delete(access_token, id) do
-    Client.post!("/api/v3.0/delete_expense/#{id}", access_token)
+  def delete(id) do
+    Client.post!("/api/v3.0/delete_expense/#{id}")
   end
 end

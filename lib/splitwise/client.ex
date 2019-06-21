@@ -3,12 +3,14 @@ defmodule ExSplitwise.Client do
   Defines the `ExSplitwise.Client` struct, and the HTTP requests functions to hit the Splitwise API.
   """
 
+  import ExSplitwise.OAuth2.Client, only: [access_token: 0]
+
   @base_url "https://www.splitwise.com"
 
   alias ExSplitwise.Client.Response
 
-  def get!(url, access_token) do
-    result = HTTPoison.get!("#{@base_url}#{url}", ["Authorization": "Bearer #{access_token}"])
+  def get!(url) do
+    result = HTTPoison.get!("#{@base_url}#{url}", ["Authorization": "Bearer #{access_token()}"])
 
     %Response{
       body: decode!(result.body),
@@ -17,15 +19,15 @@ defmodule ExSplitwise.Client do
     }
   end
 
-  def post!(url, access_token) do
-    post!(url, access_token, [])
+  def post!(url) do
+    post!(url, [])
   end
 
-  def post!(url, access_token, body) do
+  def post!(url, body) do
     result = HTTPoison.post!(
       "#{@base_url}#{url}",
       {:form, body},
-      ["Authorization": "Bearer #{access_token}"])
+      ["Authorization": "Bearer #{access_token()}"])
 
     %Response{
       body: decode!(result.body),
