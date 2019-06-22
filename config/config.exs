@@ -10,11 +10,11 @@ use Mix.Config
 
 # You can configure your application as:
 #
-#     config :splitwise, key: :value
+#     config :ex_splitwise, key: :value
 #
 # and access this configuration in your application as:
 #
-#     Application.get_env(:splitwise, :key)
+#     Application.get_env(:ex_splitwise, :key)
 #
 # You can also configure a third-party app:
 #
@@ -27,4 +27,7 @@ use Mix.Config
 # Configuration from the imported file will override the ones defined
 # here (which is why it is important to import them last).
 #
-#     import_config "#{Mix.env()}.exs"
+config :ex_splitwise, http: HTTPoison
+
+import_config "#{Mix.env()}.exs"
+
