@@ -6,8 +6,7 @@ A wrapper for the [Splitwise API](http://dev.splitwise.com/).
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `ex_splitwise` to your list of dependencies in `mix.exs`:
+The package can be installed by adding `ex_splitwise` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
@@ -122,7 +121,5 @@ All the functions return a `%ExSplitwise.Reponse{}` struct with the following fi
 ### Currencies
 
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/splitwise](https://hexdocs.pm/splitwise).
-
+---
+Documentation can be found at [https://hexdocs.pm/ex_splitwise](https://hexdocs.pm/ex_splitwise).
