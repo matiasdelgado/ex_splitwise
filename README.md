@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/matiasdelgado/ex_splitwise.svg?branch=master)](https://travis-ci.org/matiasdelgado/ex_splitwise)
+
 # Splitwise API wrapper
 
 A wrapper for the [Splitwise API](http://dev.splitwise.com/).
