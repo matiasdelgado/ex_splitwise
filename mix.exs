@@ -34,6 +34,7 @@ defmodule ExSplitwise.MixProject do
       {:oauth2, "~>1.0"},
       {:poison, "~> 3.0", optional: true},
       {:httpoison, "~> 1.5"},
+      {:credo, "~> 1.0.0", only: [:dev, :test], runtime: false},
       {:ex_doc, "~> 0.19", only: :dev, runtime: false},
       {:mox, "~> 0.5", only: :test}
     ]

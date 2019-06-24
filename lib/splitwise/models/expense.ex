@@ -37,12 +37,12 @@ defmodule ExSplitwise.Models.Expense do
   """
   def convert(data = %__MODULE__{}) do
     result = [
-      { "cost", data.cost },
-      { "currency_code", data.currency_code || "USD" },
-      { "group_id", data.group_id },
-      { "category_id", data.category_id },
-      { "description", data.description || "New expense" },
-      { "creation_method", data.creation_method || "equal" }
+      {"cost", data.cost},
+      {"currency_code", data.currency_code || "USD"},
+      {"group_id", data.group_id},
+      {"category_id", data.category_id},
+      {"description", data.description || "New expense"},
+      {"creation_method", data.creation_method || "equal"}
     ]
 
     # convert all users to plain props
@@ -50,14 +50,18 @@ defmodule ExSplitwise.Models.Expense do
   end
 
   defp toList([], result), do: result
-  defp toList([user|users], result) do
+
+  defp toList([user | users], result) do
     index = length(users)
 
-    toList(users, [
-      { "users__#{index}__user_id", user.id },
-      { "users__#{index}__paid_share", user.paid_share },
-      { "users__#{index}__owed_share", user.owed_share }
-    ] ++ result)
+    toList(
+      users,
+      [
+        {"users__#{index}__user_id", user.id},
+        {"users__#{index}__paid_share", user.paid_share},
+        {"users__#{index}__owed_share", user.owed_share}
+      ] ++ result
+    )
   end
 
   # defp flatten([], result), do: result

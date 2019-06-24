@@ -11,8 +11,8 @@ defmodule ExSplitwise.ClientTest do
   describe "get!/1" do
     test "triggers a GET request with headers" do
       url = "/someurl"
-      headers = ["Authorization": "Bearer token"]
-      result = %{ body: "{}", status_code: 200, headers: [] }
+      headers = [Authorization: "Bearer token"]
+      result = %{body: "{}", status_code: 200, headers: []}
 
       ExSplitwise.HttpMock
       |> expect(:get!, fn "https://www.splitwise.com/someurl", ^headers -> result end)
@@ -24,16 +24,15 @@ defmodule ExSplitwise.ClientTest do
   describe "post!/2" do
     test "triggers a POST request with headers" do
       url = "/someurl"
-      headers = ["Authorization": "Bearer token"]
+      headers = [Authorization: "Bearer token"]
       body = %{}
-      result = %{ body: "{ \"value\": 1 }", status_code: 200, headers: [] }
+      result = %{body: "{ \"value\": 1 }", status_code: 200, headers: []}
 
       ExSplitwise.HttpMock
       |> expect(:post!, fn
-        "https://www.splitwise.com/someurl",
-        {:form, ^body},
-        ^headers
-        -> result end)
+        "https://www.splitwise.com/someurl", {:form, ^body}, ^headers ->
+          result
+      end)
 
       response = ExSplitwise.Client.post!(url, body)
       assert response.body["value"] == 1
