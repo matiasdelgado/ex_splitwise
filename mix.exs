@@ -10,12 +10,9 @@ defmodule ExSplitwise.MixProject do
       deps: deps(),
       name: "ex_splitwise",
       source_url: "https://github.com/matiasdelgado/ex_splitwise",
-      docs: [
-        extras: [
-          {"README.md", [title: "Overview"]}
-        ],
-        main: "readme"
-      ]
+      docs: docs(),
+      package: package(),
+      description: "Simple Elixir SDK for the Splitwise API"
     ]
   end
 
@@ -25,6 +22,25 @@ defmodule ExSplitwise.MixProject do
       extra_applications: [:logger],
       mod: {ExSplitwise.Application, []},
       env: [http: HTTPoison, oauth_client: ExSplitwise.OAuth2]
+    ]
+  end
+
+  defp package do
+    [
+     files: ["lib", "mix.exs", "README.md"],
+     maintainers: ["Matias Delgado"],
+     licenses: ["MIT"],
+     links: %{"GitHub" => "https://github.com/matiasdelgado/ex_splitwise",
+              "Docs" => "https://hexdocs.pm/ex_splitwise/"}
+     ]
+  end
+
+  defp docs do
+    [
+      extras: [
+        {"README.md", [title: "Overview"]}
+      ],
+      main: "readme"
     ]
   end
 

@@ -30,6 +30,6 @@ defmodule ExSplitwise.Notifications do
       }
   """
   def all() do
-    ExSplitwise.Client.get!( "/api/v3.0/get_notifications")
+    ExSplitwise.Client.get!("/api/v3.0/get_notifications")
   end
 end
