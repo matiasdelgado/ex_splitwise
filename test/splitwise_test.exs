@@ -1,5 +1,5 @@
 defmodule SplitwiseTest do
   use ExUnit.Case
-  doctest Splitwise
+  doctest ExSplitwise
 
 end

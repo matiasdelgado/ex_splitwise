@@ -23,7 +23,8 @@ defmodule ExSplitwise.MixProject do
   def application do
     [
       extra_applications: [:logger],
-      mod: {ExSplitwise.Application, []}
+      mod: {ExSplitwise.Application, []},
+      env: [http: HTTPoison, oauth_client: ExSplitwise.OAuth2]
     ]
   end
 
@@ -34,8 +35,7 @@ defmodule ExSplitwise.MixProject do
       {:poison, "~> 3.0", optional: true},
       {:httpoison, "~> 1.5"},
       {:ex_doc, "~> 0.19", only: :dev, runtime: false},
-      {:mox, "~> 0.5", only: :test},
-      {:exvcr, "~> 0.10", only: :test}
+      {:mox, "~> 0.5", only: :test}
     ]
   end
 end

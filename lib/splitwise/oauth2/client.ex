@@ -4,13 +4,13 @@ defmodule ExSplitwise.OAuth2.Client do
   @base_site "https://www.splitwise.com"
 
   def authorize_url!() do
-    OAuth2.Client.authorize_url!(client())
+    oauth().authorize_url!(client())
   end
 
   def get_token!(code) do
-    response = OAuth2.Client.get_token!(client(), code: code, client_secret: client().client_secret)
+    response = oauth().get_token!(client(), code: code, client_secret: client().client_secret)
 
-    with {:ok, %{"access_token" => access_token, "token_type" => _}} <- Poison.decode(response.token.access_token) do
+    with {:ok, %{"access_token" => access_token, "token_type" => _}} <- json_lib().decode(response.token.access_token) do
       # FIXME: the response from the api contains a json in the access_token rather than the string
       Application.put_env(:ex_splitwise, :access_token, access_token)
 
@@ -30,7 +30,7 @@ defmodule ExSplitwise.OAuth2.Client do
     consumer_secret = Application.get_env(:ex_splitwise, :consumer_secret, nil)
     redirect_uri = Application.get_env(:ex_splitwise, :redirect_uri, nil)
 
-    OAuth2.Client.new([
+    ExSplitwise.OAuth2.new([
       strategy: OAuth2.Strategy.AuthCode,
       client_id: consumer_key,
       client_secret: consumer_secret,
@@ -38,4 +38,8 @@ defmodule ExSplitwise.OAuth2.Client do
       redirect_uri: redirect_uri
     ])
   end
+
+  defp oauth(), do: Application.get_env(:ex_splitwise, :oauth_client)
+
+  defp json_lib(), do: Application.get_env(:ex_splitwise, :json_library, Poison)
 end

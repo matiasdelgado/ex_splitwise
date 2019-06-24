@@ -59,7 +59,7 @@ defmodule ExSplitwise.Users do
       %Splitwise.Client.Response{
         body: %{
           "user" => %{
-            "email" => "johndoe@example.com",
+            "email" => "winston.smith@example.com",
             "first_name" => "Winston",
             "id" => 12345,
             "last_name" => "Smith",

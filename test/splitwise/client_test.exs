@@ -2,8 +2,9 @@ defmodule ExSplitwise.ClientTest do
   use ExUnit.Case, async: true
 
   import Mox
+  setup :verify_on_exit!
 
-  setup_all do
+  setup do
     Application.put_env(:ex_splitwise, :access_token, "token")
   end
 

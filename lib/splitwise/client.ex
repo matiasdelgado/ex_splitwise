@@ -5,13 +5,12 @@ defmodule ExSplitwise.Client do
 
   import ExSplitwise.OAuth2.Client, only: [access_token: 0]
 
-  @http Application.get_env(:ex_splitwise, :http)
   @base_url "https://www.splitwise.com"
 
   alias ExSplitwise.Client.Response
 
   def get!(url) do
-    result = @http.get!("#{@base_url}#{url}", ["Authorization": "Bearer #{access_token()}"])
+    result = http().get!("#{@base_url}#{url}", ["Authorization": "Bearer #{access_token()}"])
 
     %Response{
       body: decode!(result.body),
@@ -25,7 +24,7 @@ defmodule ExSplitwise.Client do
   end
 
   def post!(url, body) do
-    result = @http.post!(
+    result = http().post!(
       "#{@base_url}#{url}",
       {:form, body},
       ["Authorization": "Bearer #{access_token()}"])
@@ -37,11 +36,9 @@ defmodule ExSplitwise.Client do
     }
   end
 
-  defp decode!(json) do
-    json_lib().decode!(json)
-  end
+  defp decode!(json), do: json_lib().decode!(json)
 
-  defp json_lib() do
-    Application.get_env(:ex_splitwise, :json_library) || Poison
-  end
+  defp json_lib(), do: Application.get_env(:ex_splitwise, :json_library, Poison)
+
+  defp http(), do: Application.get_env(:ex_splitwise, :http)
 end
