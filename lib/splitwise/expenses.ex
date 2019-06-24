@@ -9,7 +9,7 @@ defmodule ExSplitwise.Expenses do
   Get user's expenses.
 
   ## Example
-      iex> ExSplitwise.Expenses.get("token", 28091891)
+      iex> ExSplitwise.Expenses.all()
       %ExSplitwise.Client.Response{
         body: %{
           "expenses" => [
@@ -31,7 +31,7 @@ defmodule ExSplitwise.Expenses do
   Get expense by id.
 
   ## Example
-      iex> ExSplitwise.Expenses.get("token", 28091891)
+      iex> ExSplitwise.Expenses.get(28091891)
       %ExSplitwise.Client.Response{
         body: %{
           "expense" => %{
@@ -65,7 +65,7 @@ defmodule ExSplitwise.Expenses do
         description: "Sample expense",
         creation_method: "equal"
       }
-      iex> %{body: expenses} = Splitwise.Expenses.create("token", expense)
+      iex> %{body: expenses} = Splitwise.Expenses.create(expense)
       %Splitwise.Client.Response{
         body: %{
           "errors" => %{},

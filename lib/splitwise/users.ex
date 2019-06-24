@@ -7,7 +7,7 @@ defmodule ExSplitwise.Users do
   Get current logged in user.
 
   ## Example
-      iex> Splitwise.Users.current("access-token")
+      iex> Splitwise.Users.current()
       %Splitwise.Client.Response{
         body: %{
           "user" => %{
@@ -55,7 +55,7 @@ defmodule ExSplitwise.Users do
   Get user by id
 
   ## Example
-      iex> Splitwise.Users.get("access-token", 12345)
+      iex> Splitwise.Users.get(12345)
       %Splitwise.Client.Response{
         body: %{
           "user" => %{
@@ -86,7 +86,7 @@ defmodule ExSplitwise.Users do
   A user can edit anything about their own account, and may edit the first_name, last_name,
   and email for any acquaintances who have not logged in yet.
   ## Example
-      iex> ExSplitwise.Users.update("access-token", 12345, %{ "first_name" => "Atticus", "last_name" => "Finch" })
+      iex> ExSplitwise.Users.update(12345, %{ "first_name" => "Atticus", "last_name" => "Finch" })
       %ExSplitwise.Client.Response{
         body: %{
           "user" => %{

@@ -7,7 +7,7 @@ defmodule ExSplitwise.Groups do
   Get all the groups.
 
   ## Example
-      iex> ExSplitwise.Groups.all("token")
+      iex> ExSplitwise.Groups.all()
       %ExSplitwise.Client.Response{
         body: %{
           "groups" => [...]
@@ -26,7 +26,7 @@ defmodule ExSplitwise.Groups do
   Get group by id.
 
   ## Example
-      iex> ExSplitwise.Groups.get("token", 1000)
+      iex> ExSplitwise.Groups.get(1000)
       %ExSplitwise.Client.Response{
         body: %{
           "group" => %{

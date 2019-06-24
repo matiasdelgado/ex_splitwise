@@ -1,4 +1,6 @@
 defmodule ExSplitwise.OAuth2 do
+  @moduledoc false
+
   @behaviour ExSplitwise.OAuth2.Behaviour
 
   @impl ExSplitwise.OAuth2.Behaviour

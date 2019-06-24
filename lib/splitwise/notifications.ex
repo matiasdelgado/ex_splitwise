@@ -7,7 +7,7 @@ defmodule ExSplitwise.Notifications do
   Get all the notifications of the user.
 
   ## Example
-      iex> ExSplitwise.Notifications.all("token")
+      iex> ExSplitwise.Notifications.all()
       %ExSplitwise.Client.Response{
         body: %{
           "notifications" => [

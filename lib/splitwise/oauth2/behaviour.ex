@@ -1,4 +1,6 @@
 defmodule ExSplitwise.OAuth2.Behaviour do
+  @moduledoc false
+
   @type authorize_url :: binary
   @type body :: any
   @type client_id :: binary

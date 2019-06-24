@@ -7,7 +7,7 @@ defmodule ExSplitwise.Friends do
   Get current user's friends.
 
   ## Example
-      iex> ExSplitwise.Friends.all("token")
+      iex> ExSplitwise.Friends.all()
       %ExSplitwise.Client.Response{
         body: %{
           "friends" => [
