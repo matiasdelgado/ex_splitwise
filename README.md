@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/matiasdelgado/ex_splitwise.svg?branch=master)](https://travis-ci.org/matiasdelgado/ex_splitwise)
+[![Coverage Status](https://coveralls.io/repos/github/matiasdelgado/ex_splitwise/badge.svg?branch=master)](https://coveralls.io/github/matiasdelgado/ex_splitwise?branch=master)
 
 # Splitwise API wrapper
 
@@ -123,3 +124,5 @@ All the functions return a `%ExSplitwise.Reponse{}` struct with the following fi
 
 ---
 Documentation can be found at [https://hexdocs.pm/ex_splitwise](https://hexdocs.pm/ex_splitwise).
+---
+Licensed under the MIT [license](./LICENSE).

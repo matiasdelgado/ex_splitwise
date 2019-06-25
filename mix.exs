@@ -12,7 +12,14 @@ defmodule ExSplitwise.MixProject do
       source_url: "https://github.com/matiasdelgado/ex_splitwise",
       docs: docs(),
       package: package(),
-      description: "Simple Elixir SDK for the Splitwise API"
+      description: "Simple Elixir SDK for the Splitwise API",
+      test_coverage: [tool: ExCoveralls],
+      preferred_cli_env: [
+        coveralls: :test,
+        "coveralls.detail": :test,
+        "coveralls.post": :test,
+        "coveralls.html": :test
+      ]
     ]
   end
 
@@ -27,7 +34,6 @@ defmodule ExSplitwise.MixProject do
 
   defp package do
     [
-     files: ["lib", "mix.exs", "README.md"],
      maintainers: ["Matias Delgado"],
      licenses: ["MIT"],
      links: %{"GitHub" => "https://github.com/matiasdelgado/ex_splitwise",
@@ -52,7 +58,8 @@ defmodule ExSplitwise.MixProject do
       {:httpoison, "~> 1.5"},
       {:credo, "~> 1.0.0", only: [:dev, :test], runtime: false},
       {:ex_doc, "~> 0.19", only: :dev, runtime: false},
-      {:mox, "~> 0.5", only: :test}
+      {:mox, "~> 0.5", only: :test},
+      {:excoveralls, "~> 0.11.1", only: :test}
     ]
   end
 end
