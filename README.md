@@ -118,11 +118,19 @@ All the functions return a `%ExSplitwise.Reponse{}` struct with the following fi
   ```
 
 ### Comments
+* get
+  ```elixir
+  %{body: body} = ExSplitwise.Comments.get(id)
+  ```
 
 ### Currencies
+* all
+  ```elixir
+  %{body: body} = ExSplitwise.Currencies.all()
+  ```
 
 
 ---
 Documentation can be found at [https://hexdocs.pm/ex_splitwise](https://hexdocs.pm/ex_splitwise).
----
+
 Licensed under the MIT [license](./LICENSE).
