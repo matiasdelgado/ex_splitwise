@@ -25,9 +25,41 @@ defmodule ExSplitwise.Friends do
     ExSplitwise.Client.get!("/api/v3.0/get_friends")
   end
 
-  # TODO: "get_friend/" + id
-  # def friend_info(id) do
-  # end
+  @doc """
+  Get friend by ID.
+
+  ## Example
+      iex> ExSplitwise.Friends.get(1000)
+      %ExSplitwise.Client.Response{
+        body: %{
+          "friend" => %{
+            "balance" => [],
+            "email" => "beth.bennet@example.com",
+            "first_name" => "Elizabeth",
+            "groups" => [
+              %{"balance" => [], "group_id" => 9000},
+              %{"balance" => [], "group_id" => 0}
+            ],
+            "id" => 1000,
+            "last_name" => "Bennet",
+            "picture" => %{
+              "large" => "...",
+              "medium" => "...",
+              "small" => "..."
+            },
+            "registration_status" => "invited",
+            "updated_at" => "2019-03-30T01:03:53Z"
+          }
+        },
+        headers: [
+          ...
+        ],
+        status: 200
+      }
+  """
+  def get(id) do
+    ExSplitwise.Client.get!("/api/v3.0/get_friend/#{id}")
+  end
 
   # TODO: "create_friend"
   # def create(data) do

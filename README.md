@@ -88,6 +88,10 @@ All the functions return a `%ExSplitwise.Reponse{}` struct with the following fi
   ```elixir
   %{body: body} = ExSplitwise.Friends.all()
   ```
+* get
+  ```elixir
+  %{body: body} = ExSplitwise.Friends.get(id)
+  ```
 
 ### Expenses
 * all
