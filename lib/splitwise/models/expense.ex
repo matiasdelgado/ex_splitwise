@@ -4,12 +4,13 @@ defmodule ExSplitwise.Models.Expense do
   @enforce_keys [:cost, :users]
   defstruct [
     :cost,
-    :currency_code,
     :group_id,
     :users,
     :category_id,
-    :description,
-    :creation_method
+    currency_code: "USD",
+    description: "New expense",
+    creation_method: "equal",
+    payment: false
   ]
 
   @doc """
@@ -27,26 +28,26 @@ defmodule ExSplitwise.Models.Expense do
         {"users__1__user_id", 1},
         {"users__1__paid_share", 500},
         {"users__1__owed_share", 0},
-        {"cost", 1000},
-        {"currency_code", "USD"},
-        {"group_id", nil},
-        {"category_id", nil},
-        {"description", "New expense"},
-        {"creation_method", "equal"}
+        {:__struct__, ExSplitwise.Models.Expense},
+        {:category_id, nil},
+        {:cost, 1000},
+        {:creation_method, "equal"},
+        {:currency_code, "USD"},
+        {:description, "New expense"},
+        {:group_id, nil},
+        {:payment, false},
       ]
   """
   def convert(data = %__MODULE__{}) do
-    result = [
-      {"cost", data.cost},
-      {"currency_code", data.currency_code || "USD"},
-      {"group_id", data.group_id},
-      {"category_id", data.category_id},
-      {"description", data.description || "New expense"},
-      {"creation_method", data.creation_method || "equal"}
-    ]
+    {users, data} = Map.pop(data, :users)
+    result = Map.to_list(data)
 
-    # convert all users to plain props
-    toList(data.users, result)
+    if users do
+      # convert all users to plain props
+      toList(users, result)
+    else
+      result
+    end
   end
 
   defp toList([], result), do: result
@@ -63,15 +64,4 @@ defmodule ExSplitwise.Models.Expense do
       ] ++ result
     )
   end
-
-  # defp flatten([], result), do: result
-  # defp flatten([user|users], result) do
-  #   index = length(users)
-
-  #   flatten(users, Map.merge(result, %{
-  #     "users__#{index}__user_id" => user.id,
-  #     "users__#{index}__paid_share" => user.paid_share,
-  #     "users__#{index}__owed_share" => user.owed_share
-  #   }))
-  # end
 end

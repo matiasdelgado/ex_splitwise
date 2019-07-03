@@ -51,33 +51,74 @@ defmodule ExSplitwise.Expenses do
   @doc """
   Create new expense.
   In the response body will include a map with the errors, or a list with the created expense.
+  To pay debt, create a new expense with the value `payment: true`.
 
   ## Example
-      iex> expense = %{
+      iex> expense = %ExSplitwise.Models.Expense{
         cost: 500,
         currency_code: "UYU",
-        group_id: "987675",
+        group_id: 987675,
         users: [
-          %{id: "12345", paid_share: 0, owed_share: 500},
-          %{id: "23456", paid_share: 500, owed_share: 0},
+          %{id: 12345, paid_share: 0, owed_share: 500},
+          %{id: 23456, paid_share: 500, owed_share: 0},
         ],
         category_id: 18,
         description: "Sample expense",
-        creation_method: "equal"
+        creation_method: "equal",
+        payment: false
       }
-      iex> %{body: expenses} = Splitwise.Expenses.create(expense)
-      %Splitwise.Client.Response{
+      iex> ExSplitwise.Expenses.create(expense)
+      %ExSplitwise.Client.Response{
         body: %{
           "errors" => %{},
           "expenses" => [
-            %{
-              "category" => %{"id" => 18, "name" => "General"},
-              ...
-            }
+            %{ ... }
           ]
         },
         headers: [
           {"Content-Type", "application/json; charset=utf-8"},
+        ],
+        status: 200
+      }
+
+  ## Example: paying debt
+      iex> expense = %ExSplitwise.Models.Expense{
+        cost: 100,
+        currency_code: "UYU",
+        group_id: 987675,
+        users: [
+          %{id: 12345, paid_share: 100, owed_share: 0},
+          %{id: 23456, paid_share: 0, owed_share: 100},
+        ],
+        category_id: 18,
+        description: "Payment",
+        payment: true
+      }
+      iex> ExSplitwise.Expenses.create(expense)
+      %ExSplitwise.Client.Response{
+        body: %{
+          "errors" => %{},
+          "expenses" => [
+            %{ ... }
+          ]
+        },
+        headers: [
+          ...
+        ],
+        status: 200
+      }
+
+  ## Example: error response
+      iex> ExSplitwise.Expenses.create(expense)
+      %ExSplitwise.Client.Response{
+        body: %{
+          "errors" => %{
+            "base" => ["Splitwise cannot sync this expense. For further help, contact ..."]
+          },
+          "expenses" => []
+        },
+        headers: [
+          ...
         ],
         status: 200
       }
@@ -99,7 +140,14 @@ defmodule ExSplitwise.Expenses do
   Delete expense by id.
 
   ## Example
-      iex> Splitwise.Expenses.delete(id)
+      iex> ExSplitwise.Expenses.delete(id)
+      %ExSplitwise.Client.Response{
+        body: %{"errors" => %{}, "success" => true},
+        headers: [
+          ...
+        ],
+        status: 200
+      }
   """
   def delete(id) do
     Client.post!("/api/v3.0/delete_expense/#{id}")
