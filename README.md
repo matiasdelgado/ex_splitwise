@@ -12,7 +12,7 @@ The package can be installed by adding `ex_splitwise` to your list of dependenci
 ```elixir
 def deps do
   [
-    {:ex_splitwise, "~> 0.1.0"}
+    {:ex_splitwise, "~> 0.2.1"}
   ]
 end
 ```
